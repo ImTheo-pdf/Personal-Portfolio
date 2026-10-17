@@ -1,12 +1,40 @@
 "use client";
 
-import { useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 
-// Soft menu blips made with the Web Audio API (no audio files). Silent unless sound is switched on.
+const MUSIC_SRC = "/music/menu.m4a";
+const MUSIC_VOLUME = 0.35;
+
+// Soft menu blips made with the Web Audio API, plus looping menu music.
+// Silent unless sound is switched on.
 export function useSounds(on: boolean) {
   const ctxRef = useRef<AudioContext | null>(null);
+  const musicRef = useRef<HTMLAudioElement | null>(null);
+  const fadeOutRef = useRef<(() => void) | null>(null);
   const onRef = useRef(on);
   onRef.current = on;
+
+  // The music fades in when sound is switched on, fades out when it's off,
+  // and pauses while the tab is hidden. It resumes where it left off.
+  useEffect(() => {
+    if (!on) return;
+    musicRef.current ??= Object.assign(new Audio(MUSIC_SRC), { loop: true, preload: "auto" });
+    const music = musicRef.current;
+    fadeOutRef.current?.();
+    const stopFade = fadeTo(music, MUSIC_VOLUME);
+    music.play().catch(() => {});
+
+    const onVisibility = () => {
+      if (document.hidden) music.pause();
+      else music.play().catch(() => {});
+    };
+    document.addEventListener("visibilitychange", onVisibility);
+    return () => {
+      document.removeEventListener("visibilitychange", onVisibility);
+      stopFade();
+      fadeOutRef.current = fadeTo(music, 0, () => music.pause());
+    };
+  }, [on]);
 
   return useMemo(() => {
     const tone = (freqs: number[], length: number, volume: number) => {
@@ -39,4 +67,21 @@ export function useSounds(on: boolean) {
       back: () => tone([990, 660], 0.16, 0.04),
     };
   }, []);
+}
+
+// Ramp an audio element's volume over about half a second.
+function fadeTo(audio: HTMLAudioElement, target: number, done?: () => void) {
+  if (target > 0 && audio.paused) audio.volume = 0;
+  const step = (target - audio.volume) / 12;
+  const timer = window.setInterval(() => {
+    const next = audio.volume + step;
+    if (step === 0 || (step > 0 ? next >= target : next <= target)) {
+      audio.volume = target;
+      window.clearInterval(timer);
+      done?.();
+    } else {
+      audio.volume = next;
+    }
+  }, 40);
+  return () => window.clearInterval(timer);
 }
