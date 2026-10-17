@@ -285,6 +285,7 @@ export const channels: Channel[] = [
         type: "links",
         items: [
           { label: "jacks3t6@mail.uc.edu", href: "mailto:jacks3t6@mail.uc.edu" },
+          { label: "trejacks223@gmail.com", href: "mailto:trejacks223@gmail.com" },
           { label: "(614) 817-3452", href: "tel:+16148173452" },
           { label: "LinkedIn", href: "https://www.linkedin.com/in/theodore-jackson-2abb8727a" },
           { label: "GitHub", href: "https://github.com/ImTheo-pdf" },
