@@ -11,7 +11,7 @@ const rounded = M_PLUS_Rounded_1c({
 export const metadata: Metadata = {
   title: "Tre Jackson",
   description:
-    "Theodore Jackson III: computer science student at the University of Cincinnati. Open to a Summer 2026 co-op.",
+    "Theodore Jackson III: computer science student at the University of Cincinnati. Open to a Summer 2027 co-op.",
 };
 
 export const viewport: Viewport = {

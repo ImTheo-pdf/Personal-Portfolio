@@ -89,6 +89,16 @@ export const channels: Channel[] = [
         type: "entries",
         items: [
           {
+            title: "Software Developer Intern, Siemens",
+            meta: "Milford, Ohio · May – Aug 2026",
+            points: [
+              "Designed an end-to-end Python automation pipeline from scratch, gathering requirements from managers and engineers to build a new container image management process.",
+              "Built automated labeling and cleanup workflows in Harbor, owning the project from design and implementation through testing, code review, demos and production deployment.",
+              "Automated image management with Python, Docker, Linux command-line tools, JSON/CSV logging and custom scripts, eliminating months of recurring manual labeling and deletion work.",
+              "Maintained GitLab repositories through version control, code review and testing, folding in feedback from technical demos.",
+            ],
+          },
+          {
             title: "Software Engineer Intern, Kroger",
             meta: "Kroger Technology & Digital · Cincinnati · Aug – Dec 2025",
             points: [
@@ -121,6 +131,23 @@ export const channels: Channel[] = [
         type: "entries",
         items: [
           {
+            title: "Spatial awareness app for Deaf people",
+            meta: "Knight Hacks IX · Swift, Python, Hugging Face, ARKit · Oct 2026",
+            points: [
+              "Won Best Use of Open-Source AI (Hugging Face) at Knight Hacks IX.",
+              "Built and tested iOS workflows for real-time speech captions and sound visualization, with priority-based alerts for detected sounds.",
+              "Refined AI sound classification through prompt engineering, and helped with computer vision for recognizing people and objects so captions match their speakers.",
+            ],
+          },
+          {
+            title: "This portfolio",
+            meta: "Solo project · Next.js, React, Tailwind CSS, Figma · Feb 2026 – now",
+            points: [
+              "Designed and built a responsive web app with reusable components.",
+              "Used structured AI prompts, refined over many rounds, to help with development, documentation and UI polish.",
+            ],
+          },
+          {
             title: "Cookbook app",
             meta: "Solo project · React Native · Feb – May 2025",
             points: [
@@ -152,12 +179,12 @@ export const channels: Channel[] = [
       {
         type: "tags",
         heading: "Languages",
-        items: ["C++", "Java", "Python", "SQL", "PromQL", "JSON", "MATLAB"],
+        items: ["C++", "Java", "Python", "TypeScript", "JavaScript", "Swift", "SQL", "PromQL", "JSON", "MATLAB"],
       },
       {
         type: "tags",
         heading: "Tools",
-        items: ["React Native", "Grafana", "Prometheus", "Spring Boot", "GitHub", "LabVIEW", "Excel"],
+        items: ["React Native", "Next.js", "Tailwind CSS", "Docker", "Harbor", "Linux", "Grafana", "Prometheus", "Spring Boot", "GitHub", "GitLab", "Figma", "LabVIEW", "Excel"],
       },
       {
         type: "tags",
@@ -194,12 +221,14 @@ export const channels: Channel[] = [
       {
         type: "entries",
         heading: "Education",
-        items: [{ title: "University of Cincinnati", meta: "B.S. Computer Science · Graduating May 2028" }],
+        items: [{ title: "University of Cincinnati", meta: "B.S. Computer Science · Graduating May 2028", points: ["Dean's List"] }],
       },
       {
         type: "entries",
-        heading: "Leadership",
+        heading: "Activities",
         items: [
+          { title: "Disney College Program", meta: "The Walt Disney Company · Orlando · Aug 2026 – now" },
+          { title: "Knight Hacks IX", meta: "University of Central Florida hackathon · Oct 2026" },
           { title: "National Society of Black Engineers", meta: "Member · 2023 – now" },
           {
             title: "Bearcat Buddies",
@@ -212,6 +241,7 @@ export const channels: Channel[] = [
         type: "entries",
         heading: "Honors",
         items: [
+          { title: "Best Use of Open-Source AI (Hugging Face)", meta: "Knight Hacks IX · Oct 2026" },
           { title: "Dr. Edward N. Prather STEM Scholar", meta: "Bridge Program, UC · 2023 – now" },
           { title: "Choose Ohio First Scholarship", meta: "2023 – now" },
           { title: "Emerging Engineer", meta: "UC College of Engineering · 2023 – now" },
@@ -232,7 +262,7 @@ export const channels: Channel[] = [
     blocks: [
       {
         type: "text",
-        text: "The best way to reach me is email. I'm open to a co-op for Summer 2026.",
+        text: "The best way to reach me is email. I'm open to a co-op for Summer 2027.",
       },
       {
         type: "links",
