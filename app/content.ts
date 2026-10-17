@@ -21,7 +21,7 @@ export type Picture = {
   alt: string;
   width: number;
   height: number;
-  credit?: string;
+  caption?: string;
 };
 
 export type Block =
@@ -78,6 +78,13 @@ export const channels: Channel[] = [
           { label: "At", value: "University of Cincinnati\nDean's List" },
           { label: "Graduating", value: "May 2028" },
           { label: "Based in", value: "Cincinnati, Ohio" },
+        ],
+      },
+      {
+        type: "photos",
+        items: [
+          { src: "/images/photos/professional-shot.jpg", alt: "Tre Jackson outdoors in a brown jacket", width: 1333, height: 2000 },
+          { src: "/images/photos/tre.jpg", alt: "Tre Jackson, headshot", width: 2000, height: 1500 },
         ],
       },
     ],
@@ -205,17 +212,30 @@ export const channels: Channel[] = [
   {
     id: "photos",
     name: "Photos",
-    tagline: "Ohio, so far.",
+    tagline: "Places I've been.",
     icon: "camera",
     tint: "leaf",
     blocks: [
       {
         type: "photos",
         items: [
-          { src: "/images/cincinnati-night.jpg", alt: "Cincinnati skyline at night over the Ohio River", width: 1920, height: 1280, credit: "EEJCC, CC0" },
-          { src: "/images/roebling-bridge.jpg", alt: "The Roebling Suspension Bridge in Cincinnati", width: 1920, height: 1440, credit: "Warren LeMay, CC0" },
-          { src: "/images/uc-campus-green.jpg", alt: "The campus green at the University of Cincinnati", width: 1920, height: 1440, credit: "Bearcat2011, CC BY-SA 3.0" },
-          { src: "/images/columbus-downtown.jpg", alt: "Downtown Columbus across the Scioto River", width: 1920, height: 1312, credit: "Paul Wasneski, public domain" },
+          { src: "/images/photos/castle.jpg", alt: "Cinderella Castle under a sky of tall clouds", width: 1500, height: 2000, caption: "Cinderella Castle, Magic Kingdom" },
+          { src: "/images/photos/ak-tree.jpg", alt: "The Tree of Life against a bright blue sky", width: 1500, height: 2000, caption: "Tree of Life, Animal Kingdom" },
+          { src: "/images/photos/epcot-japan.jpg", alt: "The pagoda at EPCOT's Japan pavilion on a sunny day", width: 1500, height: 2000, caption: "Japan pavilion, EPCOT" },
+          { src: "/images/photos/clearwater-beach.jpg", alt: "Seagulls over Clearwater Beach with a blue umbrella on the sand", width: 1500, height: 2000, caption: "Clearwater Beach, Florida" },
+          { src: "/images/photos/magic-balloons.jpg", alt: "A bunch of Mickey balloons on Main Street, U.S.A.", width: 1500, height: 2000, caption: "Balloons on Main Street, U.S.A." },
+          { src: "/images/photos/epcot-evening.jpg", alt: "Spaceship Earth glowing purple at dusk behind palm trees", width: 1500, height: 2000, caption: "Spaceship Earth at dusk" },
+          { src: "/images/photos/cake-bake.jpg", alt: "The bright dining room and chandelier at The Cake Bake Shop", width: 1500, height: 2000, caption: "The Cake Bake Shop" },
+          { src: "/images/photos/st-kitts.jpg", alt: "St. Kitts seen across the water, with green mountains behind the town", width: 2000, height: 1500, caption: "St. Kitts from the water" },
+          { src: "/images/photos/avatar.jpg", alt: "A Na'vi figure from Avatar with braids and feathers", width: 1500, height: 2000, caption: "Pandora, Animal Kingdom" },
+          { src: "/images/photos/tower-of-terror.jpg", alt: "The Hollywood Tower Hotel under a purple evening sky", width: 1500, height: 2000, caption: "Tower of Terror at dusk" },
+          { src: "/images/photos/honeymoon-beach.jpg", alt: "Clouds over a calm, clear beach", width: 1500, height: 2000, caption: "Honeymoon Beach" },
+          { src: "/images/photos/epcot-ball.jpg", alt: "Spaceship Earth from below, with a palm tree in front", width: 1500, height: 2000, caption: "Spaceship Earth, EPCOT" },
+          { src: "/images/photos/st-kitts-sculpture.jpg", alt: "A classical statue in a tropical garden", width: 1500, height: 2000, caption: "Sculpture garden, St. Kitts" },
+          { src: "/images/photos/castle-right.jpg", alt: "Cinderella Castle from the side under storm clouds", width: 1500, height: 2000, caption: "Cinderella Castle, from the side" },
+          { src: "/images/photos/dark-epcot-ball.jpg", alt: "Close-up of Spaceship Earth's panels lit up at night", width: 1500, height: 2000, caption: "Spaceship Earth after dark" },
+          { src: "/images/photos/cincinnati-night.jpg", alt: "The Cincinnati skyline reflected in the Ohio River at night", width: 1500, height: 2000, caption: "Cincinnati at night" },
+          { src: "/images/photos/epcot-ball-night.jpg", alt: "Spaceship Earth lit blue at night", width: 1500, height: 2000, caption: "Spaceship Earth at night" },
         ],
       },
     ],
@@ -242,6 +262,12 @@ export const channels: Channel[] = [
         ],
       },
       {
+        type: "photos",
+        items: [
+          { src: "/images/photos/knight-hacks-day-1.jpg", alt: "Tre and three teammates in front of the Knight Hacks sign", width: 2000, height: 1125, caption: "Knight Hacks IX, day one" },
+        ],
+      },
+      {
         type: "entries",
         heading: "Honors & Awards",
         items: [
@@ -249,6 +275,12 @@ export const channels: Channel[] = [
           { title: "Dr. Edward N. Prather STEM Scholar", meta: "Bridge Program, UC · 2023 – now" },
           { title: "Choose Ohio First Scholarship", meta: "2023 – now" },
           { title: "Emerging Engineer", meta: "UC College of Engineering · 2023 – now" },
+        ],
+      },
+      {
+        type: "photos",
+        items: [
+          { src: "/images/photos/hugging-face-award.jpg", alt: "Tre's team together after winning at Knight Hacks IX", width: 2000, height: 1125, caption: "Best Use of Open-Source AI (Hugging Face), Knight Hacks IX" },
         ],
       },
     ],
@@ -293,12 +325,4 @@ export const channels: Channel[] = [
       },
     ],
   },
-];
-
-// Credits for the photographs from Wikimedia Commons. Keep these when you keep the pictures.
-export const credits = [
-  { title: "Downtown Cincinnati skyline at night", by: "EEJCC", licence: "CC0", url: "https://commons.wikimedia.org/w/index.php?curid=180829335" },
-  { title: "Roebling Suspension Bridge, Cincinnati", by: "Warren LeMay", licence: "CC0", url: "https://commons.wikimedia.org/w/index.php?curid=79351138" },
-  { title: "Campus Green", by: "Bearcat2011", licence: "CC BY-SA 3.0", url: "https://commons.wikimedia.org/w/index.php?curid=15740820" },
-  { title: "Downtown Columbus from Main St Bridge", by: "Paul Wasneski", licence: "Public domain", url: "https://commons.wikimedia.org/wiki/File:Downtown_Columbus_View_from_Main_St_Bridge_-_edit1.jpg" },
 ];

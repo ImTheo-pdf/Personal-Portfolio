@@ -1,8 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import { channels, credits, gridSlots, person, type Block, type Channel } from "../content";
+import { channels, gridSlots, person, type Block, type Channel } from "../content";
+import Gallery from "./Gallery";
 import Icon from "./Icon";
 import { useSounds } from "./sounds";
 
@@ -259,19 +259,6 @@ function ChannelScreen({
           {channel.blocks.map((b, i) => (
             <BlockView key={i} block={b} />
           ))}
-          {channel.id === "photos" && (
-            <p className="credits">
-              Photos from Wikimedia Commons:{" "}
-              {credits.map((c, i) => (
-                <span key={c.url}>
-                  <a href={c.url} target="_blank" rel="noreferrer">
-                    {c.title}
-                  </a>{" "}
-                  ({c.by}, {c.licence}){i < credits.length - 1 ? ", " : "."}
-                </span>
-              ))}
-            </p>
-          )}
         </article>
       </div>
     </div>
@@ -338,16 +325,7 @@ function BlockView({ block }: { block: Block }) {
       return (
         <section className="block">
           {heading}
-          <ul className="photos">
-            {block.items.map((p) => (
-              <li key={p.src}>
-                <figure>
-                  <Image src={p.src} alt={p.alt} width={p.width} height={p.height} sizes="(max-width: 700px) 90vw, 400px" />
-                  <figcaption>{p.alt}</figcaption>
-                </figure>
-              </li>
-            ))}
-          </ul>
+          <Gallery items={block.items} />
         </section>
       );
     case "links":
