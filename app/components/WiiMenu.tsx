@@ -175,7 +175,7 @@ function BottomBar({
           Sound {soundOn ? "on" : "off"}
         </button>
 
-        <button className="round round-right" onClick={(e) => onRight(e.currentTarget)} aria-label="Message board: contact Tre">
+        <button className="round round-right" onClick={(e) => onRight(e.currentTarget)} aria-label="Contact Tre">
           <Icon name="mail" className="round-icon" />
         </button>
       </div>
@@ -346,15 +346,26 @@ function BlockView({ block }: { block: Block }) {
           <p className="links">
             {block.items.map((l) => (
               <a
-                key={l.href}
+                key={l.label}
                 className="pill pill-link"
                 href={l.href}
-                {...(l.href.startsWith("http") ? { target: "_blank", rel: "noreferrer" } : {})}
+                {...(l.download
+                  ? { download: "" }
+                  : l.href.startsWith("http") || l.href.endsWith(".pdf")
+                    ? { target: "_blank", rel: "noreferrer" }
+                    : {})}
               >
                 {l.label}
               </a>
             ))}
           </p>
+        </section>
+      );
+    case "pdf":
+      return (
+        <section className="block">
+          {heading}
+          <iframe className="pdf-frame" src={`${block.src}#navpanes=0&view=FitH`} title={block.title} />
         </section>
       );
   }

@@ -159,6 +159,9 @@ button.tile:hover .tile-icon {
   font-weight: 500;
   color: var(--ink-soft);
   letter-spacing: 0.01em;
+  line-height: 1.2;
+  text-align: center;
+  padding: 0 8px;
 }
 
 .tile-empty {
@@ -509,6 +512,7 @@ button.tile:hover .tile-icon {
 }
 .facts dd {
   font-weight: 500;
+  white-space: pre-line;
 }
 
 .entries {
@@ -604,6 +608,16 @@ button.tile:hover .tile-icon {
   color: var(--wii-blue-deep);
   border-color: #a9def3;
   background: linear-gradient(#ffffff 0%, #ffffff 40%, #dcf4fd 100%);
+}
+
+.pdf-frame {
+  display: block;
+  width: 100%;
+  height: min(80svh, 1000px);
+  border: 4px solid #fff;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 6px 16px rgba(30, 110, 150, 0.15);
 }
 
 /* ---------- Bubbles ---------- */
@@ -726,6 +740,9 @@ button.tile:hover .tile-icon {
   .facts,
   .photos {
     grid-template-columns: 1fr;
+  }
+  .pdf-frame {
+    height: 70svh;
   }
 }
 

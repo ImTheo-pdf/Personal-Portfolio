@@ -11,6 +11,7 @@ export type IconName =
   | "star"
   | "camera"
   | "document"
+  | "medal"
   | "mail";
 
 export type Tint = "aqua" | "sky" | "leaf" | "pearl";
@@ -33,7 +34,8 @@ export type Block =
     }
   | { type: "tags"; heading?: string; items: string[] }
   | { type: "photos"; heading?: string; items: Picture[] }
-  | { type: "links"; heading?: string; items: { label: string; href: string }[] };
+  | { type: "links"; heading?: string; items: { label: string; href: string; download?: boolean }[] }
+  | { type: "pdf"; heading?: string; src: string; title: string };
 
 export type Channel = {
   id: string; // also the link, e.g. yoursite.com/#work
@@ -48,7 +50,9 @@ export const person = {
   name: "Tre Jackson",
   fullName: "Theodore Jackson III",
   email: "jacks3t6@mail.uc.edu",
+  phone: "(614) 817-3452",
   linkedin: "https://www.linkedin.com/in/theodore-jackson-2abb8727a",
+  github: "https://github.com/ImTheo-pdf",
   resumePdf: "/resume.pdf",
 };
 
@@ -71,7 +75,7 @@ export const channels: Channel[] = [
         type: "facts",
         items: [
           { label: "Studying", value: "Computer Science, B.S." },
-          { label: "At", value: "University of Cincinnati" },
+          { label: "At", value: "University of Cincinnati\nDean's List" },
           { label: "Graduating", value: "May 2028" },
           { label: "Based in", value: "Cincinnati, Ohio" },
         ],
@@ -188,6 +192,11 @@ export const channels: Channel[] = [
       },
       {
         type: "tags",
+        heading: "AI",
+        items: ["Prompt engineering", "AI-assisted development", "Hugging Face", "AI sound classification"],
+      },
+      {
+        type: "tags",
         heading: "Coursework",
         items: ["Data & Discrete Structures", "Databases", "Engineering Design Thinking", "Software Engineering"],
       },
@@ -212,20 +221,15 @@ export const channels: Channel[] = [
     ],
   },
   {
-    id: "resume",
-    name: "Résumé",
-    tagline: "Everything, in one place.",
-    icon: "document",
+    id: "awards",
+    name: "Experiences & Awards",
+    tagline: "What I'm part of.",
+    icon: "medal",
     tint: "sky",
     blocks: [
       {
         type: "entries",
-        heading: "Education",
-        items: [{ title: "University of Cincinnati", meta: "B.S. Computer Science · Graduating May 2028", points: ["Dean's List"] }],
-      },
-      {
-        type: "entries",
-        heading: "Activities",
+        heading: "Experiences",
         items: [
           { title: "Disney College Program", meta: "The Walt Disney Company · Orlando · Aug 2026 – now" },
           { title: "Knight Hacks IX", meta: "University of Central Florida hackathon · Oct 2026" },
@@ -239,7 +243,7 @@ export const channels: Channel[] = [
       },
       {
         type: "entries",
-        heading: "Honors",
+        heading: "Honors & Awards",
         items: [
           { title: "Best Use of Open-Source AI (Hugging Face)", meta: "Knight Hacks IX · Oct 2026" },
           { title: "Dr. Edward N. Prather STEM Scholar", meta: "Bridge Program, UC · 2023 – now" },
@@ -247,28 +251,43 @@ export const channels: Channel[] = [
           { title: "Emerging Engineer", meta: "UC College of Engineering · 2023 – now" },
         ],
       },
+    ],
+  },
+  {
+    id: "resume",
+    name: "Résumé",
+    tagline: "My résumé.",
+    icon: "document",
+    tint: "aqua",
+    blocks: [
       {
         type: "links",
-        items: [{ label: "Download the PDF", href: "/resume.pdf" }],
+        items: [
+          { label: "Download PDF", href: "/resume.pdf", download: true },
+          { label: "Open in new tab", href: "/resume.pdf" },
+        ],
       },
+      { type: "pdf", src: "/resume.pdf", title: "Theodore Jackson III résumé" },
     ],
   },
   {
     id: "contact",
-    name: "Message Board",
-    tagline: "Say hello.",
+    name: "Contact Me",
+    tagline: "Reach out anytime.",
     icon: "mail",
     tint: "pearl",
     blocks: [
       {
         type: "text",
-        text: "The best way to reach me is email. I'm open to a co-op for Summer 2027.",
+        text: "Email is the best way to reach me, but feel free to call or text too. I'm open to a co-op for Summer 2027.",
       },
       {
         type: "links",
         items: [
           { label: "jacks3t6@mail.uc.edu", href: "mailto:jacks3t6@mail.uc.edu" },
+          { label: "(614) 817-3452", href: "tel:+16148173452" },
           { label: "LinkedIn", href: "https://www.linkedin.com/in/theodore-jackson-2abb8727a" },
+          { label: "GitHub", href: "https://github.com/ImTheo-pdf" },
         ],
       },
     ],

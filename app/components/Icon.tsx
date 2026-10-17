@@ -74,6 +74,14 @@ const shapes: Record<IconName, React.ReactNode> = {
       </g>
     </>
   ),
+  medal: (
+    <>
+      <path d="M19 6h10l6 16H25z" />
+      <path d="M45 6H35l-6 16h10z" />
+      <circle cx="32" cy="40" r="16" />
+      <circle cx="32" cy="40" r="8.5" fill="none" stroke="#e9f9ff" strokeOpacity="1" strokeWidth="3" />
+    </>
+  ),
   mail: (
     <>
       <rect x="7" y="15" width="50" height="35" rx="8" />
@@ -103,5 +111,6 @@ const shines: Record<IconName, React.ReactNode> = {
   star: <ellipse cx="32" cy="22" rx="8" ry="4" />,
   camera: <rect x="11" y="21" width="42" height="7" rx="3.5" />,
   document: <rect x="18" y="10" width="28" height="6" rx="3" />,
+  medal: <ellipse cx="32" cy="30" rx="9" ry="4" />,
   mail: <rect x="11" y="17" width="42" height="6" rx="3" />,
 };
