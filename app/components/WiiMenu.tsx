@@ -13,6 +13,7 @@ export default function WiiMenu() {
   const [open, setOpen] = useState<Open>(null);
   const [soundOn, setSoundOn] = useState(false);
   const sounds = useSounds(soundOn);
+  const [dark, toggleDark] = useDarkMode();
   const lastTile = useRef<HTMLElement | null>(null);
 
   // Open a channel from the URL (#work), and follow the back button.
@@ -87,6 +88,8 @@ export default function WiiMenu() {
         hidden={!!open}
         soundOn={soundOn}
         onToggleSound={() => setSoundOn((s) => !s)}
+        dark={dark}
+        onToggleDark={toggleDark}
         onLeft={(el) => about && openChannel(about, el)}
         onRight={(el) => contact && openChannel(contact, el)}
       />
@@ -108,12 +111,16 @@ function BottomBar({
   hidden,
   soundOn,
   onToggleSound,
+  dark,
+  onToggleDark,
   onLeft,
   onRight,
 }: {
   hidden: boolean;
   soundOn: boolean;
   onToggleSound: () => void;
+  dark: boolean;
+  onToggleDark: () => void;
   onLeft: (el: HTMLElement) => void;
   onRight: (el: HTMLElement) => void;
 }) {
@@ -144,8 +151,8 @@ function BottomBar({
         <svg className="bar-shape" viewBox="0 0 1440 160" preserveAspectRatio="none" aria-hidden="true">
           <defs>
             <linearGradient id="bar-fill" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stopColor="#f7f7f7" />
-              <stop offset="1" stopColor="#dcdcdc" />
+              <stop className="bar-stop-top" offset="0" stopColor="#f7f7f7" />
+              <stop className="bar-stop-bottom" offset="1" stopColor="#dcdcdc" />
             </linearGradient>
           </defs>
           <path
@@ -167,8 +174,12 @@ function BottomBar({
 
         <p className="bar-date">{date}</p>
 
+        <button className="bar-toggle theme" onClick={onToggleDark} aria-pressed={dark}>
+          {dark ? "Light" : "Dark"}
+        </button>
+
         <button
-          className={`sound ${soundOn ? "is-on" : ""}`}
+          className={`bar-toggle sound ${soundOn ? "is-on" : ""}`}
           onClick={onToggleSound}
           aria-pressed={soundOn}
         >
@@ -379,6 +390,26 @@ function Bubbles() {
       ))}
     </div>
   );
+}
+
+// Light is the default, like the Wii. A visitor's choice is saved for next time.
+function useDarkMode() {
+  const [dark, setDark] = useState(false);
+  useEffect(() => {
+    const t = window.setTimeout(() => setDark(document.documentElement.dataset.theme === "dark"), 0);
+    return () => window.clearTimeout(t);
+  }, []);
+  const toggle = () => {
+    const next = !dark;
+    setDark(next);
+    document.documentElement.dataset.theme = next ? "dark" : "light";
+    try {
+      localStorage.setItem("theme", next ? "dark" : "light");
+    } catch {
+      // private mode: the choice just won't be remembered
+    }
+  };
+  return [dark, toggle] as const;
 }
 
 function useNow() {

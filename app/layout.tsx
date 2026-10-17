@@ -15,8 +15,14 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#f4f6f7",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f4f6f7" },
+    { media: "(prefers-color-scheme: dark)", color: "#0b161d" },
+  ],
 };
+
+// Apply a saved dark/light choice before the page paints, so it never flashes.
+const themeScript = `try{var t=localStorage.getItem("theme");if(t==="dark"||t==="light")document.documentElement.dataset.theme=t}catch(e){}`;
 
 export default function RootLayout({
   children,
@@ -24,7 +30,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={rounded.variable}>
+    <html lang="en" className={rounded.variable} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body>{children}</body>
     </html>
   );
