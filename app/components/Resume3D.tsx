@@ -20,7 +20,7 @@ export default function Resume3D({ fileUrl = "/resume.pdf" }: Props) {
   const [numPages, setNumPages] = useState(1);
   const [page, setPage] = useState(1);
 
-  const [zoom, setZoom] = useState(2);
+  const [zoom, setZoom] = useState(1);
 
   const clamp = (v: number, min: number, max: number) =>
     Math.max(min, Math.min(max, v));
